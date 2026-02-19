@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gold Profit Calculator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+	<nav>
+		  <a href="index.html">Home</a>
+		  <a href="finance-concepts.html">Finance Concepts</a>
+		  <a href="market-analysis.html">Market Analysis</a>
+		  <a href="calculator.html">Gold Calculator</a>
+		  <a href="top-five.html">Top Five</a>
+		  <a href="behind-the-scenes.html">Behind the Scenes</a>
+		</nav>
+
+<div class="container">
+
+<h1>Gold Profit Calculator</h1>
+
+<p>Buy Price (per item):</p>
+<input type="number" id="buyPrice">
+
+<p>Sell Price (per item):</p>
+<input type="number" id="sellPrice">
+
+<p>Quantity:</p>
+<input type="number" id="quantity">
+
+<br><br>
+<button onclick="calculateProfit()">Calculate Profit</button>
+
+<h2 id="result"></h2>
+
+</div>
+
+<script>
+function calculateProfit() {
+
+  var buy = document.getElementById("buyPrice").value;
+  var sell = document.getElementById("sellPrice").value;
+  var quantity = document.getElementById("quantity").value;
+
+  buy = Number(buy);
+  sell = Number(sell);
+  quantity = Number(quantity);
+
+  var grossProfit = (sell - buy) * quantity;
+
+  var auctionHouseFee = sell * quantity * 0.05;
+
+  var netProfit = grossProfit - auctionHouseFee;
+
+  document.getElementById("result").innerHTML =
+    "Gross Profit: " + grossProfit + " gold<br>" +
+    "Auction House Fee (5%): " + auctionHouseFee + " gold<br>" +
+    "Net Profit: " + netProfit + " gold";
+}
+</script>
+
+</body>
+</html>
